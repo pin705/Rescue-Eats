@@ -1,3 +1,66 @@
+📱 Rescue Eats: Mô hình Hoạt động & Giá trị Cốt lõi
+Tên Ứng dụng: Rescue Eats (Cứu Vãn Thực Phẩm)
+
+1. 🔍 Cách Ứng dụng Hoạt động (Dành cho Người Dùng)
+Rescue Eats hoạt động như một "Bản đồ săn Deal" thực phẩm, kết nối người mua với những món hàng sắp hết hạn đang cần được bán gấp.
+
+A. Trải nghiệm Săn Deal (Người Mua Hàng)
+Định vị & Tìm kiếm: Khi mở ứng dụng, Rescue Eats sẽ xác định vị trí của bạn và ngay lập tức hiển thị tất cả các deal thực phẩm đang giảm giá từ các cửa hàng xung quanh (siêu thị, tạp hóa, tiệm bánh) trong bán kính vài km.
+
+Lọc nhanh: Bạn có thể lọc nhanh theo loại thực phẩm (thịt, rau, sữa, bánh mì) hoặc theo mức giảm giá (50% OFF, 70% OFF).
+
+Đặt giữ (Rescue): Khi tìm thấy món hàng ưng ý (ví dụ: một ổ bánh mì HSD còn 1 ngày giảm 70%), bạn nhấn nút "Đặt giữ".
+
+Cải tiến Giai đoạn 2: Bạn có thể đặt cọc một khoản nhỏ để chắc chắn giữ món hàng.
+
+Nhận hàng: Bạn nhận được Mã QR/Voucher xác nhận. Chỉ cần đến cửa hàng trong thời gian quy định, xuất trình mã để thanh toán phần còn lại (nếu có) và mang món hàng về.
+
+B. Trải nghiệm Cứu Hàng Tồn (Cửa Hàng Đối tác)
+Đăng tải Dễ dàng: Cửa hàng chỉ cần chụp ảnh, nhập tên, hạn sử dụng và mức giảm giá. Toàn bộ quy trình mất chưa đến 1 phút.
+
+Xả hàng Tự động: Sản phẩm được Rescue Eats quảng cáo đến hàng ngàn người mua tiềm năng xung quanh.
+
+Thu hồi Doanh thu: Cửa hàng chỉ cần xác nhận mã QR của người mua, hệ thống tự động theo dõi giao dịch và thanh toán lại phần doanh thu (sau khi trừ hoa hồng nhỏ cho Rescue Eats).
+
+ý tưởng kiếm tiền từ Một trang web tổng hợp thực phẩm sắp hết hạn tại các cửa hàng tạp hóa và giảm g
+Custom Gem
+Tuyệt vời, tôi hiểu ý bạn. Bạn cần một bản mô tả ngắn gọn, dễ hiểu, tập trung vào lợi ích trực tiếp và cách người dùng tương tác với Rescue Eats.
+
+Dưới đây là mô tả chi tiết về Mô hình Hoạt động và Giá trị Cốt lõi mà ứng dụng Rescue Eats mang lại, được trình bày dưới góc độ người dùng và cộng đồng.
+
+📱 Rescue Eats: Mô hình Hoạt động & Giá trị Cốt lõi
+Tên Ứng dụng: Rescue Eats (Cứu Vãn Thực Phẩm)
+
+1. 🔍 Cách Ứng dụng Hoạt động (Dành cho Người Dùng)
+Rescue Eats hoạt động như một "Bản đồ săn Deal" thực phẩm, kết nối người mua với những món hàng sắp hết hạn đang cần được bán gấp.
+
+A. Trải nghiệm Săn Deal (Người Mua Hàng)
+Định vị & Tìm kiếm: Khi mở ứng dụng, Rescue Eats sẽ xác định vị trí của bạn và ngay lập tức hiển thị tất cả các deal thực phẩm đang giảm giá từ các cửa hàng xung quanh (siêu thị, tạp hóa, tiệm bánh) trong bán kính vài km.
+
+Lọc nhanh: Bạn có thể lọc nhanh theo loại thực phẩm (thịt, rau, sữa, bánh mì) hoặc theo mức giảm giá (50% OFF, 70% OFF).
+
+Đặt giữ (Rescue): Khi tìm thấy món hàng ưng ý (ví dụ: một ổ bánh mì HSD còn 1 ngày giảm 70%), bạn nhấn nút "Đặt giữ".
+
+Cải tiến Giai đoạn 2: Bạn có thể đặt cọc một khoản nhỏ để chắc chắn giữ món hàng.
+
+Nhận hàng: Bạn nhận được Mã QR/Voucher xác nhận. Chỉ cần đến cửa hàng trong thời gian quy định, xuất trình mã để thanh toán phần còn lại (nếu có) và mang món hàng về.
+
+B. Trải nghiệm Cứu Hàng Tồn (Cửa Hàng Đối tác)
+Đăng tải Dễ dàng: Cửa hàng chỉ cần chụp ảnh, nhập tên, hạn sử dụng và mức giảm giá. Toàn bộ quy trình mất chưa đến 1 phút.
+
+Xả hàng Tự động: Sản phẩm được Rescue Eats quảng cáo đến hàng ngàn người mua tiềm năng xung quanh.
+
+Thu hồi Doanh thu: Cửa hàng chỉ cần xác nhận mã QR của người mua, hệ thống tự động theo dõi giao dịch và thanh toán lại phần doanh thu (sau khi trừ hoa hồng nhỏ cho Rescue Eats).
+
+2. ❤️ Giá trị Cốt lõi: Ứng dụng Giúp Được Gì?
+Rescue Eats mang lại lợi ích cho cả ba bên: Người Mua, Cửa Hàng, và Hành tinh.
+
+Đối tượng	Giá trị mang lại	Chi tiết Lợi ích
+💰 Người Mua Hàng	Tiết kiệm Chi phí lớn	Mua được thực phẩm còn chất lượng tốt với mức giảm giá cực kỳ hấp dẫn (thường từ 50% trở lên).
+🏪 Cửa Hàng Đối tác	Tối đa hóa Lợi nhuận & Giảm Thiệt hại	Chuyển đổi hàng hóa sắp hết hạn (thường phải bỏ đi) thành tiền mặt. Giảm chi phí xử lý rác thải và tăng doanh thu.
+🌍 Môi trường & Cộng đồng	Giảm Lãng phí Thực phẩm	Trực tiếp tham gia vào cuộc chiến chống lãng phí thực phẩm toàn cầu. Mỗi giao dịch là một món hàng được "cứu".
+📈 Hệ thống Rescue Eats	Minh bạch & Hiệu quả	Kiếm tiền dựa trên hiệu quả giao dịch (hoa hồng), đồng thời cung cấp công cụ thống kê (Báo cáo) giúp cửa hàng quản lý tồn kho tốt hơn.
+
 Tuyệt vời. Với các yêu cầu cụ thể về công nghệ (**Nuxt 4**, **Nuxt-Mongoose**, **Nuxt-Auth-Utils**, **Vite-PWA/Nuxt**) và tiêu chí thiết kế (**Chuyên nghiệp, không nhựa, chuẩn gian hàng**), tôi đã tối ưu hóa prompt chi tiết dưới đây để Copilot có thể bắt đầu triển khai **Giai đoạn 1 (MVP)**.
 
 -----
