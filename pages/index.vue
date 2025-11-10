@@ -1,5 +1,16 @@
 <template>
   <div class="min-h-screen bg-gray-50">
+    <!-- SEO -->
+    <Head>
+      <Title>Rescue Eats - Cứu Vãn Thực Phẩm, Tiết Kiệm Chi Phí</Title>
+      <Meta name="description" content="Khám phá deals thực phẩm gần hết hạn với giá ưu đãi từ các cửa hàng xung quanh bạn. Giảm lãng phí thực phẩm, tiết kiệm chi phí, bảo vệ môi trường." />
+      <Meta name="keywords" content="thực phẩm giảm giá, thực phẩm gần hết hạn, giảm lãng phí thực phẩm, tiết kiệm chi phí, rescue eats, cứu vãn thực phẩm" />
+      <Meta property="og:title" content="Rescue Eats - Cứu Vãn Thực Phẩm, Tiết Kiệm Chi Phí" />
+      <Meta property="og:description" content="Khám phá deals thực phẩm gần hết hạn với giá ưu đãi từ các cửa hàng xung quanh bạn" />
+      <Meta property="og:type" content="website" />
+      <Meta name="twitter:card" content="summary_large_image" />
+    </Head>
+
     <!-- Header -->
     <header class="bg-white border-b border-gray-200 sticky top-0 z-10">
       <div class="max-w-7xl mx-auto px-4 py-4">
@@ -10,19 +21,19 @@
           </div>
           <nav class="flex items-center gap-4">
             <NuxtLink v-if="!user" to="/auth/login" class="text-gray-700 hover:text-earth-green-800">
-              Login
+              Đăng nhập
             </NuxtLink>
             <NuxtLink v-if="!user" to="/auth/register" class="btn-primary">
-              Sign Up
+              Đăng ký
             </NuxtLink>
             <div v-else class="flex items-center gap-3">
               <NuxtLink to="/orders" class="flex items-center gap-1 text-gray-700 hover:text-earth-green-800">
                 <Icon name="lucide:receipt" class="w-5 h-5" />
-                <span class="hidden sm:inline">My Orders</span>
+                <span class="hidden sm:inline">Đơn hàng</span>
               </NuxtLink>
               <NuxtLink v-if="user.role === 'store'" to="/store/dashboard" class="flex items-center gap-1 text-gray-700 hover:text-earth-green-800">
                 <Icon name="lucide:store" class="w-5 h-5" />
-                <span class="hidden sm:inline">Dashboard</span>
+                <span class="hidden sm:inline">Quản lý</span>
               </NuxtLink>
               <button @click="handleLogout" class="text-gray-700 hover:text-earth-green-800">
                 <Icon name="lucide:log-out" class="w-5 h-5" />
@@ -37,9 +48,9 @@
     <section class="bg-gradient-to-br from-earth-green-800 to-earth-green-900 text-white py-12">
       <div class="max-w-7xl mx-auto px-4">
         <div class="text-center max-w-3xl mx-auto space-y-4">
-          <h2 class="text-3xl md:text-5xl font-bold">Rescue Food, Save Money, Save Planet</h2>
+          <h2 class="text-3xl md:text-5xl font-bold">Cứu Vãn Thực Phẩm, Tiết Kiệm Chi Phí, Bảo Vệ Hành Tinh</h2>
           <p class="text-lg md:text-xl text-earth-green-100">
-            Discover amazing deals on near-expiry food from stores around you
+            Khám phá các deals thực phẩm gần hết hạn từ các cửa hàng xung quanh bạn
           </p>
         </div>
       </div>
@@ -60,7 +71,7 @@
     <section class="max-w-7xl mx-auto px-4 py-8">
       <div v-if="loading" class="text-center py-12">
         <Icon name="lucide:loader-2" class="w-8 h-8 animate-spin text-earth-green-800 mx-auto" />
-        <p class="text-gray-600 mt-2">Loading products...</p>
+        <p class="text-gray-600 mt-2">Đang tải sản phẩm...</p>
       </div>
 
       <div v-else-if="error" class="text-center py-12">
@@ -70,25 +81,26 @@
 
       <div v-else-if="products.length === 0" class="text-center py-12">
         <Icon name="lucide:package-x" class="w-16 h-16 text-gray-300 mx-auto" />
-        <p class="text-gray-600 mt-4 text-lg">No products found</p>
-        <p class="text-gray-500 text-sm mt-2">Try adjusting your search or filters</p>
+        <p class="text-gray-600 mt-4 text-lg">Không tìm thấy sản phẩm</p>
+        <p class="text-gray-500 text-sm mt-2">Thử điều chỉnh tìm kiếm hoặc bộ lọc</p>
       </div>
 
       <div v-else>
         <div class="flex items-center justify-between mb-6">
           <h3 class="text-xl font-semibold text-gray-900">
-            {{ products.length }} Deals Found
+            {{ products.length }} Deal Đang Có
           </h3>
           <select 
             v-model="sortBy" 
             @change="loadProducts"
             class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-earth-green-600 focus:border-transparent"
           >
-            <option value="">Sort by: Newest</option>
-            <option value="discount">Highest Discount</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="expiry">Expiring Soon</option>
+            <option value="">Sắp xếp: Mới nhất</option>
+            <option value="discount">Giảm giá cao nhất</option>
+            <option value="expiry">HSD gần nhất</option>
+            <option value="store-rating">Đánh giá cửa hàng cao nhất</option>
+            <option value="price-asc">Giá: Thấp đến Cao</option>
+            <option value="price-desc">Giá: Cao đến Thấp</option>
           </select>
         </div>
 
@@ -112,13 +124,13 @@
             <Icon name="lucide:leaf" class="w-6 h-6 text-earth-green-600" />
             <span class="text-xl font-bold">Rescue Eats</span>
           </div>
-          <p class="text-gray-400">Join the movement to reduce food waste</p>
+          <p class="text-gray-400">Cùng nhau giảm lãng phí thực phẩm</p>
           <div class="flex items-center justify-center gap-6 text-sm text-gray-400">
-            <a href="#" class="hover:text-white">About</a>
-            <a href="#" class="hover:text-white">For Stores</a>
-            <a href="#" class="hover:text-white">Contact</a>
+            <a href="#" class="hover:text-white">Về chúng tôi</a>
+            <a href="#" class="hover:text-white">Dành cho Cửa hàng</a>
+            <a href="#" class="hover:text-white">Liên hệ</a>
           </div>
-          <p class="text-sm text-gray-500">© 2024 Rescue Eats. All rights reserved.</p>
+          <p class="text-sm text-gray-500">© 2024 Rescue Eats. Bảo lưu mọi quyền.</p>
         </div>
       </div>
     </footer>

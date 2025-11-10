@@ -1,12 +1,17 @@
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)
-  const { search, category, location, maxDistance, sort } = query
+  const { search, category, location, maxDistance, sort, storeId } = query
 
   try {
     let filter: any = {
       status: 'active',
       quantity: { $gt: 0 },
       expiryDate: { $gt: new Date() }, // Only show products not yet expired
+    }
+
+    // Filter by store ID if provided
+    if (storeId) {
+      filter.storeId = storeId
     }
 
     // Search by name
@@ -21,8 +26,8 @@ export default defineEventHandler(async (event) => {
 
     let products
 
-    // Location-based search
-    if (location) {
+    // Location-based search (only if no specific store requested)
+    if (location && !storeId) {
       const [lng, lat] = location.toString().split(',').map(Number)
       const maxDist = maxDistance ? Number(maxDistance) : 5000 // default 5km
 
@@ -42,8 +47,8 @@ export default defineEventHandler(async (event) => {
 
       const storeIds = nearbyStores.map((s) => s._id)
       filter.storeId = { $in: storeIds }
-    } else {
-      // Just get products from approved stores
+    } else if (!storeId) {
+      // Just get products from approved stores (if no specific store requested)
       const approvedStores = await StoreSchema.find({ status: 'approved' })
       const storeIds = approvedStores.map((s) => s._id)
       filter.storeId = { $in: storeIds }
