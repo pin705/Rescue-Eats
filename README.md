@@ -1,52 +1,171 @@
-Tuyệt vời. Với các yêu cầu cụ thể về công nghệ (**Nuxt 4**, **Nuxt-Mongoose**, **Nuxt-Auth-Utils**, **Vite-PWA/Nuxt**) và tiêu chí thiết kế (**Chuyên nghiệp, không nhựa, chuẩn gian hàng**), tôi đã tối ưu hóa prompt chi tiết dưới đây để Copilot có thể bắt đầu triển khai **Giai đoạn 1 (MVP)**.
+# 🍃 Rescue Eats - Cứu Vãn Thực Phẩm
 
------
+A professional web application built with Nuxt 4 to connect buyers with near-expiry food products from stores, reducing food waste and saving money.
 
-## 💻 Prompt Triển khai Giai đoạn 1 (MVP) cho Copilot
+## 🌟 Features
 
+### For Customers
+- **Location-Based Search**: Find deals near you with geolocation
+- **Quick Filters**: Browse by category (Meat, Vegetables, Dairy, Bakery, etc.) or discount level
+- **Product Reservation**: Reserve products and receive unique voucher codes
+- **My Orders**: Track all reservations with QR/voucher codes
+
+### For Stores
+- **Easy Registration**: Simple sign-up with pending approval workflow
+- **Product Management**: Add, edit, and archive products with ease
+- **Mobile-First**: Optimized for posting products on-the-go
+- **Auto-Calculations**: Discount percentages calculated automatically
+
+## 🛠️ Tech Stack
+
+- **Framework**: Nuxt 4 (SSR, SEO optimized)
+- **Database**: MongoDB with Mongoose ODM
+- **Authentication**: nuxt-auth-utils (session-based)
+- **PWA**: @vite-pwa/nuxt (installable on mobile)
+- **Styling**: Tailwind CSS (earth-green color palette)
+- **Icons**: Iconify with Lucide icon set
+
+## 📦 Installation
+
+### Prerequisites
+- Node.js 18+ 
+- MongoDB (local or cloud instance)
+
+### Setup Steps
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/pin705/Rescue-Eats.git
+cd Rescue-Eats
 ```
-Bạn là lập trình viên chuyên nghiệp, giàu kinh nghiệm với kiến trúc Nuxt 4, tập trung xây dựng sản phẩm khả dụng tối thiểu (MVP) cho một "Trang web tổng hợp thực phẩm sắp hết hạn".
 
-## 1. Stack Công nghệ và Cấu hình Bắt buộc
-
-- **Framework Chính:** Nuxt 4 (Server-side rendering, tối ưu SEO, tốc độ).
-- **Database:** MongoDB, tích hợp thông qua **nuxt-mongoose**. Cần khởi tạo các schema cơ bản: `User` (Khách hàng), `Store` (Cửa hàng), `Product`.
-- **Xác thực:** Sử dụng **nuxt-auth-utils** (hoặc module tương đương/cấu hình Nuxt 4) cho cả Khách hàng và Cửa hàng.
-- **PWA:** Tích hợp **@vite-pwa/nuxt** để đảm bảo khả năng cài đặt trên di động.
-- **Styling:** Sử dụng Tailwind CSS.
-
-## 2. Ưu tiên Thiết kế Giao diện (UI/UX) - Tuyệt đối không thỏa hiệp
-
-- **Nguyên tắc:** Giao diện phải **chuyên nghiệp, tinh tế, hiện đại, không sử dụng phong cách "nhựa"** (plastic/childish look). Ưu tiên thiết kế **"Mobile-First"**.
-- **Iconography:** Dùng các bộ Icon line-art (ví dụ: Iconify - `lucide` hoặc `tabler` sets) hoặc Font-based icons, **tránh xa các icon 3D/màu sắc sặc sỡ**.
-- **Màu sắc:** Tông màu chủ đạo là **Xanh lá cây đậm/Green Earth** (gợi cảm hứng tiết kiệm/môi trường) kết hợp với màu trung tính (Trắng, Xám đậm/Đen) để tạo sự sang trọng.
-
-## 3. Các Use Case Cốt lõi Cần Triển khai (Giai đoạn MVP)
-
-Triển khai các tính năng tập trung vào việc tạo ra giao dịch cơ bản, chia thành 2 luồng chính:
-
-### A. Luồng Cửa hàng (Đăng hàng - Source of Supply)
-
-| Feature | Mô tả và Yêu cầu |
-| :--- | :--- |
-| **Đăng ký Cửa hàng** | Form đăng ký đơn giản (Tên, Email, Mật khẩu, Tên Cửa hàng, Địa chỉ). Sau khi đăng ký, tài khoản ở trạng thái **'Pending'** chờ Admin duyệt. |
-| **Form Đăng bán Sản phẩm** | Form phải **trực quan, dễ dùng trên di động**. Các trường bắt buộc: **Ảnh sản phẩm, Tên, HSD (dùng Date Picker), Số lượng, Giá Gốc, Giá Giảm (tính % giảm tự động).** |
-| **Quản lý Sản phẩm** | Dashboard đơn giản hiển thị danh sách sản phẩm đã đăng. Cho phép **Chỉnh sửa** hoặc **Gỡ bỏ** (Archive). |
-
-### B. Luồng Người Mua Hàng (Tìm kiếm & Đặt giữ)
-
-| Feature | Mô tả và Yêu cầu |
-| :--- | :--- |
-| **Trang Chủ** | **Thanh tìm kiếm lớn** tích hợp tìm kiếm theo **Từ khóa** và **Vị trí/Khoảng cách**. Hiển thị các danh mục lọc nhanh (Chips/Tags). |
-| **Danh sách Sản phẩm** | Hiển thị sản phẩm dưới dạng **Thẻ (Card)**. Mỗi thẻ phải nhấn mạnh: **Giá giảm, % Giảm, và HSD (thời gian còn lại)**. Thẻ phải có layout chuyên nghiệp, không gây rối. |
-| **Trang Chi tiết Sản phẩm** | Hiển thị chi tiết (Ảnh lớn, Mô tả, Địa chỉ Cửa hàng trên bản đồ nhỏ). Nút **"Đặt giữ (Nhận Voucher)"** phải lớn và rõ ràng, hiển thị số lượng còn lại. |
-| **Cơ chế Đặt giữ (Non-Payment)** | Khi Khách hàng nhấn "Đặt giữ", tạo một đơn hàng với **Mã Voucher/Mã QR** duy nhất. Yêu cầu hiển thị mã này trên trang "Đơn hàng của tôi". **Lưu ý: Không triển khai cổng thanh toán online ở MVP, chỉ là đặt giữ/nhận mã.** |
-
-## 4. Output Yêu cầu
-
-1.  Cấu hình môi trường Nuxt 4 hoàn chỉnh với các module đã nêu.
-2.  Khởi tạo các file Schema Mongoose (Store, Product, Order) cơ bản.
-3.  Triển khai các Component UI chính (Product Card, Search Bar, Order Summary Card) theo tiêu chí chuyên nghiệp.
-4.  Hoàn thành luồng đăng ký/đăng nhập cho Cửa hàng và Khách hàng.
-5.  Hoàn thành giao diện Đăng bán Sản phẩm (Store) và Tìm kiếm/Đặt giữ (Customer) ở mức MVP.
+2. **Install dependencies**
+```bash
+npm install
 ```
+
+3. **Configure environment variables**
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and set your MongoDB connection:
+```env
+MONGODB_URI=mongodb://localhost:27017/rescue-eats
+NUXT_SESSION_PASSWORD=your-secret-password-at-least-32-characters-long
+```
+
+4. **Run development server**
+```bash
+npm run dev
+```
+
+Visit `http://localhost:3000`
+
+## 🚀 Build & Deploy
+
+### Production Build
+```bash
+npm run build
+```
+
+### Preview Production Build
+```bash
+npm run preview
+```
+
+### Generate Static Site
+```bash
+npm run generate
+```
+
+## 📱 PWA Features
+
+The app is installable as a Progressive Web App:
+- Offline support
+- Add to home screen
+- Fast loading with caching
+- Native-like experience on mobile
+
+## 🗄️ Database Models
+
+### User
+- Customer and Store accounts
+- Email/password authentication
+- Role-based access
+
+### Store
+- Store profile with location
+- Approval status (pending/approved/rejected)
+- Geospatial coordinates for proximity search
+
+### Product
+- Name, description, images
+- Expiry date tracking
+- Original/discounted pricing
+- Auto-calculated discount percentage
+- Quantity management
+
+### Order
+- Product reservations
+- Unique voucher codes
+- 24-hour expiration
+- Product snapshot for historical data
+
+## 🎨 Design Principles
+
+- **Professional & Clean**: No childish or plastic design elements
+- **Mobile-First**: Optimized for smartphone usage
+- **Earth-Green Palette**: Environmental theme (#166534)
+- **Line Icons**: Lucide icon set for modern, minimalist look
+- **Accessible**: Clear typography and good contrast
+
+## 🔐 Security
+
+- Passwords hashed with bcrypt
+- Session-based authentication
+- Store approval workflow
+- Input validation on all forms
+
+## 📍 API Endpoints
+
+### Authentication
+- `POST /api/auth/register` - Register customer/store
+- `POST /api/auth/login` - Login
+- `POST /api/auth/logout` - Logout
+- `GET /api/auth/session` - Get current session
+
+### Products
+- `GET /api/products` - List products (with filters)
+- `GET /api/products/:id` - Get product details
+- `POST /api/products` - Create product (store only)
+- `PUT /api/products/:id` - Update product (store only)
+- `DELETE /api/products/:id` - Archive product (store only)
+
+### Orders
+- `POST /api/orders` - Create reservation
+- `GET /api/orders` - Get user's orders
+
+## 🌍 Environmental Impact
+
+Every reservation helps:
+- Reduce food waste
+- Save money for customers
+- Recover revenue for stores
+- Support sustainability
+
+## 📝 License
+
+MIT License - see LICENSE file for details
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📧 Contact
+
+For questions or support, please open an issue on GitHub.
+
+---
+
+**Built with ❤️ to fight food waste**
