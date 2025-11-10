@@ -1,5 +1,12 @@
 <template>
   <div class="min-h-screen bg-gray-50">
+    <!-- SEO -->
+    <Head>
+      <Title>Bảng điều khiển | Rescue Eats</Title>
+      <Meta name="description" content="Quản lý cửa hàng và sản phẩm" />
+      <Meta name="robots" content="noindex, nofollow" />
+    </Head>
+
     <!-- Header -->
     <header class="bg-white border-b border-gray-200 sticky top-0 z-10">
       <div class="max-w-7xl mx-auto px-4 py-4">
@@ -8,7 +15,7 @@
             <button @click="navigateTo('/')" class="text-gray-600 hover:text-earth-green-800">
               <Icon name="lucide:arrow-left" class="w-6 h-6" />
             </button>
-            <h1 class="text-xl font-semibold text-gray-900">Store Dashboard</h1>
+            <h1 class="text-xl font-semibold text-gray-900">Bảng điều khiển</h1>
           </div>
           <button @click="handleLogout" class="text-gray-600 hover:text-red-600">
             <Icon name="lucide:log-out" class="w-6 h-6" />
@@ -20,7 +27,7 @@
     <!-- Loading State -->
     <div v-if="loading" class="max-w-7xl mx-auto px-4 py-12 text-center">
       <Icon name="lucide:loader-2" class="w-8 h-8 animate-spin text-earth-green-800 mx-auto" />
-      <p class="text-gray-600 mt-2">Loading dashboard...</p>
+      <p class="text-gray-600 mt-2">Đang tải...</p>
     </div>
 
     <!-- Error State -->
@@ -31,11 +38,15 @@
 
     <!-- Dashboard Content -->
     <div v-else class="max-w-7xl mx-auto px-4 py-8">
-      <!-- Add Product Button -->
-      <div class="mb-8">
+      <!-- Quick Actions -->
+      <div class="mb-8 flex flex-wrap gap-4">
         <button @click="navigateTo('/store/products/new')" class="btn-primary">
           <Icon name="lucide:plus" class="w-5 h-5 inline mr-2" />
-          Add New Product
+          Thêm sản phẩm mới
+        </button>
+        <button @click="navigateTo('/store/orders')" class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium">
+          <Icon name="lucide:clipboard-list" class="w-5 h-5 inline mr-2" />
+          Quản lý đơn hàng
         </button>
       </div>
 
@@ -43,15 +54,15 @@
       <div class="space-y-6">
         <div class="flex items-center justify-between">
           <h2 class="text-2xl font-bold text-gray-900">
-            Your Products ({{ products.length }})
+            Sản phẩm của bạn ({{ products.length }})
           </h2>
         </div>
 
         <!-- Empty State -->
         <div v-if="products.length === 0" class="text-center py-12 card">
           <Icon name="lucide:package-x" class="w-16 h-16 text-gray-300 mx-auto" />
-          <p class="text-gray-600 mt-4 text-lg">No products yet</p>
-          <p class="text-gray-500 text-sm mt-2">Add your first product to start selling</p>
+          <p class="text-gray-600 mt-4 text-lg">Chưa có sản phẩm nào</p>
+          <p class="text-gray-500 text-sm mt-2">Thêm sản phẩm đầu tiên để bắt đầu bán hàng</p>
         </div>
 
         <!-- Products Grid -->
