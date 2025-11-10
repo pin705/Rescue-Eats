@@ -1,0 +1,28 @@
+{
+  "name": "rescue-eats",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@iconify/vue": "^4.1.2",
+    "@vite-pwa/nuxt": "^0.10.5",
+    "bcrypt": "^5.1.1",
+    "mongoose": "^8.8.3",
+    "nuxt": "^3.14.159",
+    "nuxt-auth-utils": "^0.4.4",
+    "nuxt-mongoose": "^1.0.6",
+    "vue": "^3.5.12",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "@types/node": "^22.9.0",
+    "typescript": "^5.6.3"
+  }
+}
