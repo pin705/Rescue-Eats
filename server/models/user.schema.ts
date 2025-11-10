@@ -23,6 +23,10 @@ export const UserSchema = defineMongooseModel({
       enum: ['customer', 'store', 'admin'],
       default: 'customer',
     },
+    followedStores: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Store',
+    }],
     createdAt: {
       type: Date,
       default: Date.now,

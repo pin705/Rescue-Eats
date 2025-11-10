@@ -63,8 +63,17 @@ export default defineEventHandler(async (event) => {
 
     products = await ProductSchema.find(filter)
       .sort(sortOption)
-      .populate('storeId', 'storeName address location')
+      .populate('storeId', 'storeName address location rating reviewCount')
       .limit(50)
+
+    // Sort by store rating if requested (requires populated storeId)
+    if (sort === 'store-rating') {
+      products = products.sort((a: any, b: any) => {
+        const ratingA = a.storeId?.rating || 0
+        const ratingB = b.storeId?.rating || 0
+        return ratingB - ratingA
+      })
+    }
 
     return {
       success: true,
