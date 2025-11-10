@@ -57,7 +57,7 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    mongodbUri: process.env.MONGODB_URI,
+    mongodbUri: process.env.MONGODB_URI || 'mongodb://localhost:27017/rescue-eats',
     sessionPassword: process.env.NUXT_SESSION_PASSWORD || 'rescue-eats-session-secret-min-32-chars-long',
     public: {
       appName: 'Rescue Eats',
