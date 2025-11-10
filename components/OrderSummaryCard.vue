@@ -33,7 +33,7 @@
             <span class="truncate">{{ order.storeId?.storeName || 'Store' }}</span>
           </div>
           <div class="text-sm text-gray-600 mt-1">
-            Quantity: {{ order.quantity }}
+            Số lượng: {{ order.quantity }}
           </div>
         </div>
       </div>
@@ -41,28 +41,28 @@
       <!-- Voucher Code -->
       <div class="bg-earth-green-50 border-2 border-dashed border-earth-green-600 rounded-lg p-4">
         <div class="text-center space-y-2">
-          <div class="text-xs text-gray-600 uppercase font-medium">Voucher Code</div>
+          <div class="text-xs text-gray-600 uppercase font-medium">Mã Voucher</div>
           <div class="font-mono text-2xl font-bold text-earth-green-800 tracking-wider">
             {{ order.voucherCode }}
           </div>
           <div class="text-xs text-gray-500">
-            Show this code at the store
+            Xuất trình mã này tại cửa hàng
           </div>
         </div>
       </div>
 
       <!-- Pricing -->
       <div class="flex items-center justify-between pt-2 border-t border-gray-100">
-        <span class="text-gray-600">Total Amount</span>
+        <span class="text-gray-600">Tổng tiền</span>
         <span class="text-xl font-bold text-earth-green-800">
           {{ formatPrice(order.totalPrice) }}
         </span>
       </div>
 
       <!-- Expiry Warning -->
-      <div v-if="!isExpired && order.status === 'reserved'" class="flex items-center gap-2 text-sm text-orange-600 bg-orange-50 px-3 py-2 rounded-lg">
+      <div v-if="!isExpired && (order.status === 'pending' || order.status === 'reserved')" class="flex items-center gap-2 text-sm text-orange-600 bg-orange-50 px-3 py-2 rounded-lg">
         <Icon name="lucide:clock" class="w-4 h-4" />
-        <span>Valid until {{ formatDate(order.expiresAt) }}</span>
+        <span>Có hiệu lực đến {{ formatDate(order.expiresAt) }}</span>
       </div>
 
       <!-- Store Address -->
@@ -102,25 +102,40 @@ const isExpired = computed(() => {
 })
 
 const statusText = computed(() => {
-  if (isExpired.value && props.order.status === 'reserved') {
-    return 'Expired'
+  const status = props.order.status
+  if (isExpired.value && (status === 'reserved' || status === 'pending')) {
+    return 'Đã hết hạn'
   }
-  return props.order.status.charAt(0).toUpperCase() + props.order.status.slice(1)
+  const statusMap: Record<string, string> = {
+    'pending': 'Chờ xác nhận',
+    'reserved': 'Đã đặt',
+    'confirmed': 'Đã xác nhận',
+    'ready': 'Sẵn sàng lấy',
+    'completed': 'Hoàn thành',
+    'cancelled': 'Đã hủy',
+    'expired': 'Đã hết hạn'
+  }
+  return statusMap[status] || status
 })
 
 const statusClass = computed(() => {
   const status = props.order.status
-  if (isExpired.value && status === 'reserved') {
+  if (isExpired.value && (status === 'reserved' || status === 'pending')) {
     return 'bg-gray-100 text-gray-600'
   }
   switch (status) {
+    case 'pending':
+      return 'bg-yellow-100 text-yellow-700'
     case 'reserved':
       return 'bg-blue-100 text-blue-700'
     case 'confirmed':
       return 'bg-green-100 text-green-700'
+    case 'ready':
+      return 'bg-indigo-100 text-indigo-700'
     case 'completed':
       return 'bg-earth-green-100 text-earth-green-700'
     case 'cancelled':
+    case 'expired':
       return 'bg-red-100 text-red-700'
     default:
       return 'bg-gray-100 text-gray-600'
@@ -145,9 +160,9 @@ const formatDate = (date: string | Date) => {
 }
 
 const formatAddress = (address: any) => {
-  if (!address) return 'Address not available'
+  if (!address) return 'Chưa có địa chỉ'
   if (typeof address === 'string') return address
   const parts = [address.street, address.city, address.state].filter(Boolean)
-  return parts.join(', ') || 'Address not available'
+  return parts.join(', ') || 'Chưa có địa chỉ'
 }
 </script>

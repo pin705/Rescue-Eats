@@ -21,7 +21,26 @@ MONGODB_URI=mongodb://localhost:27017/rescue-eats
 
 # Session Security (MUST be at least 32 characters)
 NUXT_SESSION_PASSWORD=your-very-secure-random-32-character-minimum-password-here
+
+# Cron Job Secret (for automated tasks like order expiry)
+CRON_SECRET=your-secure-cron-job-secret-token
 ```
+
+## Automated Tasks Setup
+
+The application requires automated tasks for order expiry. Set up a cron job to call:
+
+```bash
+# Run every 15 minutes to check for expired orders
+*/15 * * * * curl -X POST https://your-domain.com/api/cron/expire-orders \
+  -H "Authorization: Bearer your-cron-secret-token"
+```
+
+Or use a service like:
+- **Vercel Cron**: Add to `vercel.json`
+- **GitHub Actions**: Create a workflow
+- **EasyCron**: Free cron job service
+- **cron-job.org**: Free online cron service
 
 ## Deployment Options
 
